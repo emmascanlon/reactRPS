@@ -18,7 +18,7 @@ class Result extends Component {
     this.setState({winnerDeclared: true})
    
   if (Player1 === Player2) {
-    this.setState({Winner: "It's a Tie!"}) 
+    this.setState({winner: "It's a Tie!"}) 
     this.setState({Ties: Ties +1})
 
   }
@@ -77,22 +77,16 @@ class Result extends Component {
 { winnerDeclared ?  <div>
         <h5> Player1 chose {Player1} </h5>
         <h5> Player2 chose {Player2} </h5>
-  
-       <h1>
-         {winner}
-       </h1>
+       <h1>{winner}</h1>
        </div> : null }
 
        </div>
      
-     <Button onClick={this.setWinner} color="violet">Shoot!</Button>
-     <Button onClick={this.newRound} color="olive">New Round</Button>
-     <Button onClick={this.resetScoreBoard} color="yellow">Reset Scores</Button>
-    
-     
-     
-
+     {winnerDeclared ? 
+     <Button onClick={this.newRound} color="olive">New Round</Button> :
+     <Button onClick={this.setWinner} color="violet">Shoot!</Button> }
 <Segment>
+<Button onClick={this.resetScoreBoard} color="yellow">Reset Scores</Button>
 <h4>Player 1</h4>
 <Table>
   <tr>
